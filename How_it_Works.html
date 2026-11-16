@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="id" class="h-100">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>How it Works | Pengenalan CNN</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body class="d-flex flex-column h-100">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light py-3 bg-nav sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <i class="bi bi-cpu-fill text-primary fs-2 me-2"></i>
+                <span class="text-body fs-4 fw-bolder">CNN<span class="text-primary">Learn</span></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse py-3 py-lg-1" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link mx-2" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link mx-2 active" href="how_it_works.html">How it Works</a></li>
+                    <li class="nav-item"><a class="nav-link mx-2" href="architectures.html">Architectures</a></li>
+                    <li class="nav-item"><a class="nav-link mx-2" href="use_case.html">Use Case</a></li>
+                    <li class="nav-item"><a class="nav-link mx-2" href="code.html">Code</a></li>
+                </ul>
+                <div class="d-flex mt-3 ms-2 mt-lg-0 ms-lg-0">
+                    <a href="https://github.com/" target="_blank" class="btn btn-social-media"><i class="bi bi-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content (AREA KERJA TEMAN 1) -->
+    <main class="flex-shrink-0">
+        <div class="container py-5">
+            <div class="row mb-5">
+                <div class="col-lg-8 mx-auto text-center">
+                    <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill mb-2 fw-semibold">Arsitektur Layer</span>
+                    <h1 class="fw-bold mb-3">Cara Kerja CNN</h1>
+                    <p class="lead text-muted">Alur pemrosesan citra dari matriks piksel mentah hingga menjadi keputusan klasifikasi.</p>
+                </div>
+            </div>
+
+            <!-- Diagram Alur Keseluruhan -->
+            <div class="row mb-5">
+                <div class="col-lg-10 mx-auto">
+                    <div class="img-placeholder bg-white">
+                        <i class="bi bi-diagram-2 text-primary fs-1 mb-2"></i>
+                        <strong>[TODO TEMAN 1: Gambar Diagram Arsitektur Lengkap CNN]</strong>
+                        <small>Input Image &rarr; Convolution &rarr; ReLU &rarr; Pooling &rarr; Flattening &rarr; Fully Connected</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6 Tahapan Berurutan -->
+            <div class="row g-4">
+                <!-- Tahap 1 -->
+                <div class="col-md-6">
+                    <div class="card h-100 border-0 rounded-4 shadow-sm p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="step-number me-3">1</span>
+                            <h4 class="fw-bold mb-0">Input Image</h4>
+                        </div>
+                        <p class="text-muted">[TODO: Jelaskan bagaimana gambar dibaca komputer sebagai matriks piksel (Grayscale 2D vs RGB 3 channel).]</p>
+                    </div>
+                </div>
+
+                <!-- Tahap 2 -->
+                <div class="col-md-6">
+                    <div class="card h-100 border-0 rounded-4 shadow-sm p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="step-number me-3">2</span>
+                            <h4 class="fw-bold mb-0">Convolution Layer (Kernel/Filter)</h4>
+                        </div>
+                        <p class="text-muted">[TODO: Jelaskan cara filter/kernel bergeser (stride) melakukan dot-product untuk menghasilkan Feature Map.]</p>
+                    </div>
+                </div>
+
+                <!-- Tahap 3 -->
+                <div class="col-md-6">
+                    <div class="card h-100 border-0 rounded-4 shadow-sm p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="step-number me-3">3</span>
+                            <h4 class="fw-bold mb-0">Activation Function (ReLU)</h4>
+                        </div>
+                        <p class="text-muted">[TODO: Jelaskan fungsi Rectified Linear Unit f(x) = max(0, x) untuk menambah non-linearitas pada model.]</p>
+                    </div>
+                </div>
+
+                <!-- Tahap 4 -->
+                <div class="col-md-6">
+                    <div class="card h-100 border-0 rounded-4 shadow-sm p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="step-number me-3">4</span>
+                            <h4 class="fw-bold mb-0">Pooling Layer</h4>
+                        </div>
+                        <p class="text-muted">[TODO: Jelaskan Max Pooling dan Average Pooling untuk mereduksi dimensi spasial dan mencegah overfitting.]</p>
+                    </div>
+                </div>
+
+                <!-- Tahap 5 -->
+                <div class="col-md-6">
+                    <div class="card h-100 border-0 rounded-4 shadow-sm p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="step-number me-3">5</span>
+                            <h4 class="fw-bold mb-0">Flattening</h4>
+                        </div>
+                        <p class="text-muted">[TODO: Jelaskan proses mengubah matriks feature map 2D menjadi vektor 1 dimensi panjang.]</p>
+                    </div>
+                </div>
+
+                <!-- Tahap 6 -->
+                <div class="col-md-6">
+                    <div class="card h-100 border-0 rounded-4 shadow-sm p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="step-number me-3">6</span>
+                            <h4 class="fw-bold mb-0">Fully Connected Layer & Softmax</h4>
+                        </div>
+                        <p class="text-muted">[TODO: Jelaskan bagaimana vektor 1D dihubungkan ke layer klasifikasi akhir untuk menghasilkan probabilitas kelas.]</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer mt-auto py-4 bg-white border-top">
+        <div class="container">
+            <div class="d-flex flex-column flex-md-row align-items-center text-body">
+                <div class="copyright text-center mb-2 mb-md-0">&copy; 2026 <strong>CNNLearn</strong> — Proyek Kelompok Sains Data.</div>
+                <div class="link ms-md-auto">
+                    <a href="index.html" class="me-3 text-dark text-decoration-none">Home</a>
+                    <a href="how_it_works.html" class="me-3 text-dark text-decoration-none">How it Works</a>
+                    <a href="code.html" class="text-dark text-decoration-none">Code</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="id" class="h-100">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Architectures | Pengenalan CNN</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body class="d-flex flex-column h-100">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light py-3 bg-nav sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <i class="bi bi-cpu-fill text-primary fs-2 me-2"></i>
+                <span class="text-body fs-4 fw-bolder">CNN<span class="text-primary">Learn</span></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse py-3 py-lg-1" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link mx-2" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link mx-2" href="how_it_works.html">How it Works</a></li>
+                    <li class="nav-item"><a class="nav-link mx-2 active" href="architectures.html">Architectures</a></li>
+                    <li class="nav-item"><a class="nav-link mx-2" href="use_case.html">Use Case</a></li>
+                    <li class="nav-item"><a class="nav-link mx-2" href="code.html">Code</a></li>
+                </ul>
+                <div class="d-flex mt-3 ms-2 mt-lg-0 ms-lg-0">
+                    <a href="https://github.com/" target="_blank" class="btn btn-social-media"><i class="bi bi-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content (AREA KERJA TEMAN 2) -->
+    <main class="flex-shrink-0">
+        <div class="container py-5">
+            <div class="row mb-5">
+                <div class="col-lg-8 mx-auto text-center">
+                    <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill mb-2 fw-semibold">Evolusi Model</span>
+                    <h1 class="fw-bold mb-3">Arsitektur Populer CNN</h1>
+                    <p class="lead text-muted">Perkembangan model-model CNN bersejarah yang mendorong revolusi Computer Vision.</p>
+                </div>
+            </div>
+
+            <!-- Daftar Card Arsitektur -->
+            <div class="row g-4 mb-5">
+                <!-- LeNet-5 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-0 rounded-4 shadow-sm p-4 card-hover">
+                        <span class="badge bg-secondary w-25 mb-2">1998</span>
+                        <h4 class="fw-bold">LeNet-5</h4>
+                        <p class="text-muted small">[TODO TEMAN 2: Jelaskan pencipta (Yann LeCun), tujuan awal (pengenalan digit tulisan tangan MNIST), dan struktur dasarnya.]</p>
+                    </div>
+                </div>
+
+                <!-- AlexNet -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-0 rounded-4 shadow-sm p-4 card-hover">
+                        <span class="badge bg-primary w-25 mb-2">2012</span>
+                        <h4 class="fw-bold">AlexNet</h4>
+                        <p class="text-muted small">[TODO TEMAN 2: Jelaskan kemenangan di ImageNet 2012, penggunaan ReLU, Dropout, dan pelatihan menggunakan GPU.]</p>
+                    </div>
+                </div>
+
+                <!-- VGG-16 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-0 rounded-4 shadow-sm p-4 card-hover">
+                        <span class="badge bg-primary w-25 mb-2">2014</span>
+                        <h4 class="fw-bold">VGG-16</h4>
+                        <p class="text-muted small">[TODO TEMAN 2: Jelaskan kesederhanaan arsitektur dengan tumpukan filter kecil 3x3 dan kedalaman 16 layer.]</p>
+                    </div>
+                </div>
+
+                <!-- ResNet -->
+                <div class="col-md-6 col-lg-6">
+                    <div class="card h-100 border-0 rounded-4 shadow-sm p-4 card-hover">
+                        <span class="badge bg-success w-25 mb-2">2015</span>
+                        <h4 class="fw-bold">ResNet (Residual Network)</h4>
+                        <p class="text-muted small">[TODO TEMAN 2: Jelaskan konsep Skip Connection / Residual Block yang mengatasi masalah Vanishing Gradient pada jaringan sangat dalam.]</p>
+                    </div>
+                </div>
+
+                <!-- MobileNet -->
+                <div class="col-md-6 col-lg-6">
+                    <div class="card h-100 border-0 rounded-4 shadow-sm p-4 card-hover">
+                        <span class="badge bg-info text-dark w-25 mb-2">2017</span>
+                        <h4 class="fw-bold">MobileNet</h4>
+                        <p class="text-muted small">[TODO TEMAN 2: Jelaskan konsep Depthwise Separable Convolution yang membuat model sangat ringan untuk perangkat mobile dan edge.]</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabel Perbandingan -->
+            <div class="card border-0 rounded-4 shadow-sm p-4">
+                <h4 class="fw-bold mb-3">Tabel Perbandingan Singkat</h4>
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Arsitektur</th>
+                                <th>Tahun</th>
+                                <th>Inovasi Utama</th>
+                                <th>Keunggulan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="fw-bold">LeNet-5</td>
+                                <td>1998</td>
+                                <td>[TODO]</td>
+                                <td>[TODO]</td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">AlexNet</td>
+                                <td>2012</td>
+                                <td>[TODO]</td>
+                                <td>[TODO]</td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">VGG-16</td>
+                                <td>2014</td>
+                                <td>[TODO]</td>
+                                <td>[TODO]</td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">ResNet-50</td>
+                                <td>2015</td>
+                                <td>[TODO]</td>
+                                <td>[TODO]</td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">MobileNet</td>
+                                <td>2017</td>
+                                <td>[TODO]</td>
+                                <td>[TODO]</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer mt-auto py-4 bg-white border-top">
+        <div class="container">
+            <div class="d-flex flex-column flex-md-row align-items-center text-body">
+                <div class="copyright text-center mb-2 mb-md-0">&copy; 2026 <strong>CNNLearn</strong> — Proyek Kelompok Sains Data.</div>
+                <div class="link ms-md-auto">
+                    <a href="index.html" class="me-3 text-dark text-decoration-none">Home</a>
+                    <a href="how_it_works.html" class="me-3 text-dark text-decoration-none">How it Works</a>
+                    <a href="code.html" class="text-dark text-decoration-none">Code</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
