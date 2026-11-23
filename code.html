@@ -4,7 +4,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Tutorial Implementasi Kode CNN dengan Python TensorFlow/Keras">
+    <meta name="author" content="Tim Sains Data">
     <title>Code Tutorial | Pengenalan CNN</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800&display=swap" rel="stylesheet">
@@ -31,7 +34,9 @@
                     <li class="nav-item"><a class="nav-link mx-2 active" href="code.html">Code</a></li>
                 </ul>
                 <div class="d-flex mt-3 ms-2 mt-lg-0 ms-lg-0">
-                    <a href="https://github.com/" target="_blank" class="btn btn-social-media"><i class="bi bi-github"></i></a>
+                    <a href="https://github.com/" target="_blank" class="btn btn-social-media" title="Repository GitHub">
+                        <i class="bi bi-github"></i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -40,76 +45,148 @@
     <!-- Main Content -->
     <main class="flex-shrink-0">
         <div class="container py-5">
+            <!-- Header Halaman -->
             <div class="row mb-5">
                 <div class="col-lg-8 mx-auto text-center">
-                    <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill mb-2 fw-semibold">Implementasi Praktis</span>
+                    <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill mb-2 fw-semibold">
+                        Implementasi Praktis
+                    </span>
                     <h1 class="fw-bold mb-3">Membangun Model CNN dengan Python</h1>
-                    <p class="lead text-muted">Contoh implementasi arsitektur CNN sederhana menggunakan TensorFlow / Keras untuk klasifikasi citra.</p>
+                    <p class="lead text-muted">
+                        Contoh implementasi arsitektur Convolutional Neural Network sederhana menggunakan <strong>TensorFlow / Keras</strong> untuk klasifikasi citra 10 kelas (dataset CIFAR-10).
+                    </p>
                 </div>
             </div>
 
-            <div class="row g-4">
+            <!-- Baris Utama: Kode Python & Penjelasan Layer -->
+            <div class="row g-4 mb-5">
                 <!-- Kolom Kode -->
                 <div class="col-lg-7">
-                    <div class="card border-0 rounded-4 shadow-sm p-4">
+                    <div class="card border-0 rounded-4 shadow-sm p-4 h-100">
                         <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h5 class="fw-bold mb-0"><i class="bi bi-filetype-py text-primary me-2"></i>cnn_model.py</h5>
-                            <button class="btn btn-sm btn-outline-primary rounded-pill" onclick="copyCode()">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-filetype-py text-primary fs-4 me-2"></i>
+                                <span class="fw-bold">cnn_cifar10.py</span>
+                            </div>
+                            <button class="btn btn-sm btn-outline-primary rounded-pill px-3" id="copyBtn" onclick="copyCode()">
                                 <i class="bi bi-clipboard me-1"></i> Salin Kode
                             </button>
                         </div>
                         <pre class="code-block" id="cnnCode"><code>import tensorflow as tf
-from tensorflow.keras import layers, models
+from tensorflow.keras import datasets, layers, models
 
-# 1. Inisialisasi Model Sequential
+# 1. Memuat & Normalisasi Dataset (Nilai piksel 0-255 menjadi 0-1)
+(train_images, train_labels), (test_images, test_labels) = datasets.cifar10.load_data()
+train_images, test_images = train_images / 255.0, test_images / 255.0
+
+# 2. Membangun Arsitektur Model CNN Sequential
 model = models.Sequential([
-    # Layer Konvolusi Pertama + ReLU + MaxPooling
-    layers.Conv2D(32, (3, 3), activation='relu', input_shape=(64, 64, 3)),
+    # Blok Konvolusi 1: Ekstraksi fitur dasar (tepi & warna)
+    layers.Conv2D(32, (3, 3), activation='relu', input_shape=(32, 32, 3)),
     layers.MaxPooling2D((2, 2)),
 
-    # Layer Konvolusi Kedua + ReLU + MaxPooling
+    # Blok Konvolusi 2: Ekstraksi pola lebih kompleks
     layers.Conv2D(64, (3, 3), activation='relu'),
     layers.MaxPooling2D((2, 2)),
 
-    # Flattening & Fully Connected Layer
+    # Blok Konvolusi 3
+    layers.Conv2D(64, (3, 3), activation='relu'),
+
+    # Bagian Klasifikasi (Fully Connected)
     layers.Flatten(),
     layers.Dense(64, activation='relu'),
-    layers.Dense(10, activation='softmax') # 10 kelas output
+    layers.Dense(10, activation='softmax')
 ])
 
-# 2. Kompilasi Model
+# 3. Kompilasi Model
 model.compile(
     optimizer='adam',
     loss='sparse_categorical_crossentropy',
     metrics=['accuracy']
 )
 
-model.summary()</code></pre>
+# 4. Pelatihan Model (Training)
+history = model.fit(
+    train_images, train_labels,
+    epochs=10,
+    validation_data=(test_images, test_labels)
+)</code></pre>
                     </div>
                 </div>
 
-                <!-- Kolom Penjelasan -->
+                <!-- Kolom Penjelasan Tiap Layer -->
                 <div class="col-lg-5">
                     <div class="card border-0 rounded-4 shadow-sm p-4 h-100">
-                        <h5 class="fw-bold mb-3">Penjelasan Tiap Baris Layer</h5>
+                        <h5 class="fw-bold mb-3"><i class="bi bi-list-check text-primary me-2"></i>Bedah Struktur Layer</h5>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item px-0">
-                                <strong class="text-primary">Conv2D(32, (3, 3))</strong>
-                                <p class="text-muted small mb-0">[TODO: Jelaskan fungsi 32 filter berukuran 3x3 dan input_shape (64, 64, 3).]</p>
+                            <li class="list-group-item px-0 py-3">
+                                <div class="fw-bold text-primary font-monospace small mb-1">Normalisasi (/ 255.0)</div>
+                                <p class="text-muted small mb-0">
+                                    Mengubah rentang nilai intensitas piksel RGB dari <code>0–255</code> menjadi skala <code>0–1</code> agar proses konvergensi gradien lebih cepat dan stabil.
+                                </p>
                             </li>
-                            <li class="list-group-item px-0">
-                                <strong class="text-primary">MaxPooling2D((2, 2))</strong>
-                                <p class="text-muted small mb-0">[TODO: Jelaskan pemangkasan ukuran feature map menjadi setengahnya.]</p>
+                            <li class="list-group-item px-0 py-3">
+                                <div class="fw-bold text-primary font-monospace small mb-1">Conv2D(32, (3, 3), activation='relu')</div>
+                                <p class="text-muted small mb-0">
+                                    Menerapkan 32 <em>kernel</em> berukuran <code>3×3</code> pada gambar input berdimensi <code>32×32×3</code> (RGB), diikuti aktivasi <strong>ReLU</strong> untuk menghilangkan nilai negatif.
+                                </p>
                             </li>
-                            <li class="list-group-item px-0">
-                                <strong class="text-primary">Flatten()</strong>
-                                <p class="text-muted small mb-0">[TODO: Jelaskan konversi matriks 2D ke vektor 1D sebelum masuk Dense layer.]</p>
+                            <li class="list-group-item px-0 py-3">
+                                <div class="fw-bold text-primary font-monospace small mb-1">MaxPooling2D((2, 2))</div>
+                                <p class="text-muted small mb-0">
+                                    Mengambil nilai maksimum dari setiap area <code>2×2</code> piksel, sehingga ukuran <em>feature map</em> menyusut setengahnya dan komputasi jauh lebih ringan.
+                                </p>
                             </li>
-                            <li class="list-group-item px-0">
-                                <strong class="text-primary">Dense(10, activation='softmax')</strong>
-                                <p class="text-muted small mb-0">[TODO: Jelaskan layer output untuk menghasilkan probabilitas 10 kelas.]</p>
+                            <li class="list-group-item px-0 py-3">
+                                <div class="fw-bold text-primary font-monospace small mb-1">Flatten()</div>
+                                <p class="text-muted small mb-0">
+                                    Meratakan matriks <em>feature map</em> 3D hasil ekstraksi fitur menjadi vektor 1 dimensi agar dapat diproses oleh jaringan <em>Dense</em> klasik.
+                                </p>
+                            </li>
+                            <li class="list-group-item px-0 pt-3 pb-0">
+                                <div class="fw-bold text-primary font-monospace small mb-1">Dense(10, activation='softmax')</div>
+                                <p class="text-muted small mb-0">
+                                    <em>Output layer</em> dengan 10 neuron sesuai jumlah kelas CIFAR-10. Fungsi <strong>Softmax</strong> mengubah skor akhir menjadi probabilitas dengan total 100%.
+                                </p>
                             </li>
                         </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bagian Tambahan: Alur Eksekusi & Tips Menjalankan di Google Colab -->
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 rounded-4 shadow-sm p-4">
+                        <div class="d-flex align-items-center mb-2">
+                            <span class="step-number me-3">1</span>
+                            <h6 class="fw-bold mb-0">Siapkan Environment</h6>
+                        </div>
+                        <p class="text-muted small mb-0">
+                            Buka <strong>Google Colab</strong> atau Jupyter Notebook. Pastikan library <code>tensorflow</code> sudah terpasang (di Google Colab sudah tersedia secara bawaan).
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 rounded-4 shadow-sm p-4">
+                        <div class="d-flex align-items-center mb-2">
+                            <span class="step-number me-3">2</span>
+                            <h6 class="fw-bold mb-0">Aktifkan Akselerasi GPU</h6>
+                        </div>
+                        <p class="text-muted small mb-0">
+                            Pada Google Colab, pilih menu <em>Runtime &rarr; Change runtime type &rarr; T4 GPU</em> agar proses pelatihan 10 <em>epoch</em> selesai dalam hitungan detik.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 rounded-4 shadow-sm p-4">
+                        <div class="d-flex align-items-center mb-2">
+                            <span class="step-number me-3">3</span>
+                            <h6 class="fw-bold mb-0">Evaluasi Akurasi</h6>
+                        </div>
+                        <p class="text-muted small mb-0">
+                            Bandingkan nilai <code>accuracy</code> (data latih) dengan <code>val_accuracy</code> (data uji). Jika selisihnya terlalu jauh, tambahkan layer <code>Dropout(0.2)</code>.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -134,8 +211,15 @@ model.summary()</code></pre>
     <script>
         function copyCode() {
             const code = document.getElementById('cnnCode').innerText;
-            navigator.clipboard.writeText(code);
-            alert('Kode berhasil disalin!');
+            const btn = document.getElementById('copyBtn');
+            navigator.clipboard.writeText(code).then(() => {
+                btn.innerHTML = '<i class="bi bi-check2 me-1"></i> Tersalin!';
+                btn.classList.replace('btn-outline-primary', 'btn-success');
+                setTimeout(() => {
+                    btn.innerHTML = '<i class="bi bi-clipboard me-1"></i> Salin Kode';
+                    btn.classList.replace('btn-success', 'btn-outline-primary');
+                }, 2000);
+            });
         }
     </script>
 </body>
