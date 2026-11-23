@@ -55,7 +55,17 @@
                     <div class="card h-100 border-0 rounded-4 shadow-sm p-4 card-hover">
                         <span class="badge bg-secondary w-25 mb-2">1998</span>
                         <h4 class="fw-bold">LeNet-5</h4>
-                        <p class="text-muted small">[TODO TEMAN 2: Jelaskan pencipta (Yann LeCun), tujuan awal (pengenalan digit tulisan tangan MNIST), dan struktur dasarnya.]</p>
+                        <p class="text-muted small">Dikembangkan oleh <strong>Yann LeCun</strong> dan rekan-rekannya. Tujuan awalnya adalah mengenali digit tulisan tangan (dataset <strong>MNIST</strong>), misalnya untuk membaca angka pada cek bank dan kode pos. LeNet-5 adalah CNN modern pertama yang terbukti berhasil di dunia nyata.</p>
+                        <ul class="list-unstyled small mb-3">
+                            <li class="mb-1"><i class="bi bi-check-circle-fill text-primary me-2"></i>Input citra grayscale 32&times;32 piksel</li>
+                            <li class="mb-1"><i class="bi bi-check-circle-fill text-primary me-2"></i>2 Convolution + 2 Average Pooling</li>
+                            <li class="mb-1"><i class="bi bi-check-circle-fill text-primary me-2"></i>3 Fully Connected Layer di bagian akhir</li>
+                            <li><i class="bi bi-check-circle-fill text-primary me-2"></i>Aktivasi tanh/sigmoid</li>
+                        </ul>
+                        <div class="mt-auto pt-3 border-top d-flex justify-content-between small">
+                            <span class="text-muted"><i class="bi bi-layers me-1"></i>7 layer</span>
+                            <span class="fw-semibold text-primary"><i class="bi bi-sliders me-1"></i>&plusmn;60 ribu parameter</span>
+                        </div>
                     </div>
                 </div>
 
@@ -64,7 +74,17 @@
                     <div class="card h-100 border-0 rounded-4 shadow-sm p-4 card-hover">
                         <span class="badge bg-primary w-25 mb-2">2012</span>
                         <h4 class="fw-bold">AlexNet</h4>
-                        <p class="text-muted small">[TODO TEMAN 2: Jelaskan kemenangan di ImageNet 2012, penggunaan ReLU, Dropout, dan pelatihan menggunakan GPU.]</p>
+                        <p class="text-muted small">Karya Alex Krizhevsky, Ilya Sutskever, dan Geoffrey Hinton. AlexNet <strong>memenangkan ImageNet (ILSVRC) 2012</strong> dengan selisih error yang sangat besar dibanding metode non-deep-learning, dan menjadi titik awal ledakan deep learning di Computer Vision.</p>
+                        <ul class="list-unstyled small mb-3">
+                            <li class="mb-1"><i class="bi bi-lightning-charge-fill text-primary me-2"></i><strong>ReLU</strong> menggantikan tanh, pelatihan jauh lebih cepat</li>
+                            <li class="mb-1"><i class="bi bi-shield-check text-primary me-2"></i><strong>Dropout</strong> untuk mengurangi overfitting</li>
+                            <li class="mb-1"><i class="bi bi-gpu-card text-primary me-2"></i>Dilatih menggunakan <strong>GPU</strong></li>
+                            <li><i class="bi bi-images text-primary me-2"></i>Data augmentation pada citra latih</li>
+                        </ul>
+                        <div class="mt-auto pt-3 border-top d-flex justify-content-between small">
+                            <span class="text-muted"><i class="bi bi-layers me-1"></i>8 layer (5 Conv + 3 FC)</span>
+                            <span class="fw-semibold text-primary"><i class="bi bi-sliders me-1"></i>&plusmn;60 juta parameter</span>
+                        </div>
                     </div>
                 </div>
 
@@ -73,7 +93,16 @@
                     <div class="card h-100 border-0 rounded-4 shadow-sm p-4 card-hover">
                         <span class="badge bg-primary w-25 mb-2">2014</span>
                         <h4 class="fw-bold">VGG-16</h4>
-                        <p class="text-muted small">[TODO TEMAN 2: Jelaskan kesederhanaan arsitektur dengan tumpukan filter kecil 3x3 dan kedalaman 16 layer.]</p>
+                        <p class="text-muted small">Dikembangkan oleh Visual Geometry Group, Universitas Oxford. Idenya sederhana: tumpuk banyak filter kecil <strong>3&times;3</strong> secara berulang. Dua filter 3&times;3 berurutan punya jangkauan pandang yang sama dengan satu filter 5&times;5, tetapi parameternya lebih sedikit dan non-linearitasnya lebih banyak.</p>
+                        <ul class="list-unstyled small mb-3">
+                            <li class="mb-1"><i class="bi bi-grid-3x3 text-primary me-2"></i>Hanya memakai Conv 3&times;3 dan MaxPool 2&times;2</li>
+                            <li class="mb-1"><i class="bi bi-bricks text-primary me-2"></i>Struktur seragam, mudah dipahami</li>
+                            <li><i class="bi bi-arrow-repeat text-primary me-2"></i>Populer untuk transfer learning</li>
+                        </ul>
+                        <div class="mt-auto pt-3 border-top d-flex justify-content-between small">
+                            <span class="text-muted"><i class="bi bi-layers me-1"></i>16 layer (13 Conv + 3 FC)</span>
+                            <span class="fw-semibold text-primary"><i class="bi bi-sliders me-1"></i>&plusmn;138 juta parameter</span>
+                        </div>
                     </div>
                 </div>
 
@@ -82,7 +111,18 @@
                     <div class="card h-100 border-0 rounded-4 shadow-sm p-4 card-hover">
                         <span class="badge bg-success w-25 mb-2">2015</span>
                         <h4 class="fw-bold">ResNet (Residual Network)</h4>
-                        <p class="text-muted small">[TODO TEMAN 2: Jelaskan konsep Skip Connection / Residual Block yang mengatasi masalah Vanishing Gradient pada jaringan sangat dalam.]</p>
+                        <p class="text-muted small">Dikembangkan oleh Kaiming He dkk. dari Microsoft Research dan <strong>memenangkan ImageNet 2015</strong>. Semakin dalam sebuah jaringan, semakin sulit dilatih karena gradien menghilang (<em>vanishing gradient</em>) dan akurasi justru menurun. ResNet mengatasinya dengan <strong>Skip Connection</strong>: input sebuah blok dijumlahkan langsung ke outputnya, sehingga blok hanya perlu mempelajari selisih (residual) dan gradien punya jalur pintas saat backpropagation.</p>
+                        <div class="rounded-3 bg-light text-center py-2 mb-3 fw-semibold">
+                            <i class="bi bi-signpost-split text-success me-2"></i>Output = F(x) + x
+                        </div>
+                        <ul class="list-unstyled small mb-3">
+                            <li class="mb-1"><i class="bi bi-check-circle-fill text-success me-2"></i>Memungkinkan jaringan hingga 152 layer atau lebih</li>
+                            <li><i class="bi bi-check-circle-fill text-success me-2"></i>Varian umum: ResNet-18, 34, 50, 101, 152</li>
+                        </ul>
+                        <div class="mt-auto pt-3 border-top d-flex justify-content-between small">
+                            <span class="text-muted"><i class="bi bi-layers me-1"></i>ResNet-50: 50 layer</span>
+                            <span class="fw-semibold text-success"><i class="bi bi-sliders me-1"></i>&plusmn;25 juta parameter</span>
+                        </div>
                     </div>
                 </div>
 
@@ -91,7 +131,18 @@
                     <div class="card h-100 border-0 rounded-4 shadow-sm p-4 card-hover">
                         <span class="badge bg-info text-dark w-25 mb-2">2017</span>
                         <h4 class="fw-bold">MobileNet</h4>
-                        <p class="text-muted small">[TODO TEMAN 2: Jelaskan konsep Depthwise Separable Convolution yang membuat model sangat ringan untuk perangkat mobile dan edge.]</p>
+                        <p class="text-muted small">Dikembangkan oleh tim Google untuk perangkat dengan sumber daya terbatas seperti smartphone dan perangkat edge. Kuncinya adalah <strong>Depthwise Separable Convolution</strong>, yaitu konvolusi standar dipecah menjadi dua tahap: <em>depthwise</em> (satu filter per channel) lalu <em>pointwise</em> (konvolusi 1&times;1 untuk menggabungkan channel). Hasilnya komputasi turun sekitar 8&ndash;9 kali dengan penurunan akurasi yang kecil.</p>
+                        <div class="rounded-3 bg-light text-center py-2 mb-3 fw-semibold">
+                            <i class="bi bi-phone text-info me-2"></i>Depthwise 3&times;3 &rarr; Pointwise 1&times;1
+                        </div>
+                        <ul class="list-unstyled small mb-3">
+                            <li class="mb-1"><i class="bi bi-check-circle-fill text-info me-2"></i>Parameter <em>width multiplier</em> dan <em>resolution multiplier</em> untuk mengatur ukuran model</li>
+                            <li><i class="bi bi-check-circle-fill text-info me-2"></i>Cocok untuk inferensi real-time di perangkat mobile</li>
+                        </ul>
+                        <div class="mt-auto pt-3 border-top d-flex justify-content-between small">
+                            <span class="text-muted"><i class="bi bi-layers me-1"></i>28 layer (MobileNetV1)</span>
+                            <span class="fw-semibold text-info"><i class="bi bi-sliders me-1"></i>&plusmn;4 juta parameter</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -113,32 +164,32 @@
                             <tr>
                                 <td class="fw-bold">LeNet-5</td>
                                 <td>1998</td>
-                                <td>[TODO]</td>
-                                <td>[TODO]</td>
+                                <td>Menggabungkan Convolution, Pooling, dan Fully Connected dalam satu jaringan</td>
+                                <td>Ringan (&plusmn;60 ribu parameter), sangat baik untuk digit tulisan tangan</td>
                             </tr>
                             <tr>
                                 <td class="fw-bold">AlexNet</td>
                                 <td>2012</td>
-                                <td>[TODO]</td>
-                                <td>[TODO]</td>
+                                <td>ReLU, Dropout, dan pelatihan dengan GPU</td>
+                                <td>Memenangkan ImageNet 2012 dan memicu era deep learning</td>
                             </tr>
                             <tr>
                                 <td class="fw-bold">VGG-16</td>
                                 <td>2014</td>
-                                <td>[TODO]</td>
-                                <td>[TODO]</td>
+                                <td>Tumpukan filter kecil 3&times;3 dengan kedalaman 16 layer</td>
+                                <td>Arsitektur seragam dan mudah dipahami, bagus sebagai feature extractor</td>
                             </tr>
                             <tr>
                                 <td class="fw-bold">ResNet-50</td>
                                 <td>2015</td>
-                                <td>[TODO]</td>
-                                <td>[TODO]</td>
+                                <td>Skip Connection / Residual Block</td>
+                                <td>Bisa sangat dalam tanpa terkendala vanishing gradient, akurasi tinggi</td>
                             </tr>
                             <tr>
                                 <td class="fw-bold">MobileNet</td>
                                 <td>2017</td>
-                                <td>[TODO]</td>
-                                <td>[TODO]</td>
+                                <td>Depthwise Separable Convolution</td>
+                                <td>Sangat ringan dan cepat untuk perangkat mobile dan edge</td>
                             </tr>
                         </tbody>
                     </table>
